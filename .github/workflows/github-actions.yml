@@ -14,10 +14,12 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "14.x"
-      - run: npm install
-      - run: npm run test -- --coverage --maxWorkers=4 --ci
+      - name: Install packages using npm
+        run: npm install
+      - name: Run unit tests
+        run: npm test
       - name: Check code coverage
         run: |
-          npx check-coverage --statements 80 --branches 80 --functions 80 --lines 80 ./coverage/lcov.info
+          npm run test:coverage
         env:
           CI: true
