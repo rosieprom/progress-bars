@@ -14,12 +14,12 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "14.x"
-      - name: Install packages using npm
-        run: npm install
+      - name: Install packages using yarn
+        run: yarn install
       - name: Run unit tests
-        run: npm test
+        run: yarn test --coverage --watchAll=false
       - name: Check code coverage
         run: |
-          npm run test:coverage
+          yarn run test:coverage
         env:
           CI: true
